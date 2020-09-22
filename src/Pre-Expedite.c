@@ -28,8 +28,8 @@
 #include "mongoose.h"
 #include <fcntl.h> //Specified in man 2 open
 static char *VFS_WRITE_READ_MODE = "rw";
-static char *NFS_SERVER_SHARE_DIR = "/nfs/share/";
-static char *NFS_BLOCK_DEFAULT_DIR = "/nfs/data/";
+static char *NFS_SERVER_SHARE_DIR = "HSS-SHARE-DIR/";
+static char *NFS_BLOCK_DEFAULT_DIR = "HSS/";
 
 static char *concat_nfsblock_location(char *nfsdefault_dir, char *nfsblock_name)
 {
@@ -37,6 +37,10 @@ static char *concat_nfsblock_location(char *nfsdefault_dir, char *nfsblock_name)
     if (!opendir(nfsdefault_dir))
     {
         mkdir(nfsdefault_dir, S_IRWXU | S_IRWXG | S_IRWXO);
+    }
+    if (!opendir(NFS_SERVER_SHARE_DIR))
+    {
+        mkdir(NFS_SERVER_SHARE_DIR, S_IRWXU | S_IRWXG | S_IRWXO);
     }
     char *nfsblock_location = (char *)malloc(strlen(nfsdefault_dir) + strlen(nfsblock_name) + 1);
     sprintf(nfsblock_location, "%s%s", nfsdefault_dir, nfsblock_name);
@@ -55,7 +59,6 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-     printf("程序参数错误，所需参数个数为argv[1]:文件名%s,argv[2]:文件大小%s，argv[3]文件所属用户ID:%s,argv[3]文件所属用户组ID:%s,【当前参数个数为%d】\n", argv[1], argv[2], argv[3], argv[4],argc);
 
     char *vfs_file_name = argv[1]; //第一个参数为文件名
 
