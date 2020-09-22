@@ -2,7 +2,7 @@
 MARCO FOR VFS ,USER DEFINED MARCO
 */
                   
-#define VFS_TYPE "xfs"                             // VFS FILESYSTEM TYPE
+#define VFS_TYPE "xfs"                             // VFS FILESYSTEM TYPE (Default:XFS)
 #define VFS_MOUNT_TYPE MS_DIRSYNC | MS_SYNCHRONOUS // VFS MOUNT TYPE
 #define VFS_UNMOUNT_FLAG MNT_DETACH
 #define HTTP_METHOD_GET "GET"
