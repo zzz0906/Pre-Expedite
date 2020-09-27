@@ -1,6 +1,5 @@
 /**
- *NFS虚拟化文件系统工具
- *author liang.du@nscc-gz.cn
+ *author Zhongzhu Zhou; Liang Du; Guixin Guo;
  *date 2018.11.15 
  *version 1.0.0
  * 
